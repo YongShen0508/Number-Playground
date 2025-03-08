@@ -9,13 +9,12 @@
 ## Tools used
 * android studio
 
-## Features in our app ^_^ 
+## Features in our app
 ✔ Compare Numbers (Greater Than & Less Than)
-
 * Helps children become familiar with numeric values.  
-* Allows them to compare two numbers and determine which is greater or smaller.    
-✔ Ordering of Numbers (Ascending & Descending Order)
+* Allows them to compare two numbers and determine which is greater or smaller.  
 
+✔ Ordering of Numbers (Ascending & Descending Order)
 * Teaches children how to arrange numbers in both ascending and descending order.  
 * Encourages them to organize a set of random numbers correctly.  
   
