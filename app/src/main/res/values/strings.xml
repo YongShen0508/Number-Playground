@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PracticalAssignment</string>
+    <string name="startGame">Start</string>
+    <string name="mainActivityTitle">"Number Playground "</string>
+    <string name="firstSelection">Number Clash</string>
+    <string name="secondSelection">Number Ladder</string>
+    <string name="thirdSelection">Number Builder</string>
+    <string name="fourthSelection">Maths Master</string>
+    <string name="selectGameTitle">Select Your Game</string>
+    <string name="quitGame">Quit</string>
+    <string name="selectGameDifficultyTitle">Select your game difficulty</string>
+    <string name="moderateLevel">Moderate</string>
+    <string name="easyLevel">Easy</string>
+    <string name="hardLevel">Hard</string>
+    <string name="settings">Settings</string>
+</resources>

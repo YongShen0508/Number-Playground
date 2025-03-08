@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.NumberClash">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <!-- Drop Areas for X and Y -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/xBox"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="X"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:background="@android:color/white"
+                android:elevation="5dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:shadowColor="#A0A0A0"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
+
+            <TextView
+                android:text=" Greater Than "
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:elevation="6dp"
+                android:backgroundTint="#EEEEEE"
+                android:shadowColor="#B0BEC5"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="6"
+                android:strokeColor="#B0BEC5"/>
+
+            <TextView
+                android:id="@+id/yBox"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Y"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:background="@android:color/white"
+                android:elevation="5dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:shadowColor="#A0A0A0"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
+        </LinearLayout>
+
+        <!-- Draggable Number Options -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/num1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="45"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:tag="45"
+                android:background="#D0E8F2"
+                android:elevation="5dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
+
+            <TextView
+                android:id="@+id/num2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="89"
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:tag="89"
+                android:background="#D0E8F2"
+                android:elevation="5dp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:shadowColor="#808080"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="5"/>
+        </LinearLayout>
+
+        <!-- Check Answer Button -->
+        <Button
+            android:id="@+id/checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check Answer"
+            android:layout_marginTop="20dp"
+            android:padding="12dp"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#6D9EEB"
+            android:elevation="6dp"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

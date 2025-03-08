@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.GameSettings">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Close Button at Top-Right -->
+        <ImageButton
+            android:id="@+id/closeButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="#FFFFFF" />
+        <!-- Centered Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="490dp"
+                android:layout_height="320dp"
+                android:layout_marginTop="20dp"
+                android:background="#99000000"
+                android:clipToPadding="false"
+                android:padding="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Settings"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#00FFFF"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TableLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:stretchColumns="1">
+
+                        <!-- Sound Setting Row -->
+                        <TableRow>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Sound"
+                                android:textColor="#00FFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                android:id="@+id/soundSwitch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="Language"
+                                android:textColor="#00FFFF"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/languageSpinner"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="180dp"
+                                android:layout_marginEnd="20dp"
+                                android:backgroundTint="#00FFFF" />
+                        </TableRow>
+                    </TableLayout>
+
+                    <Button
+                        android:id="@+id/saveSettings"
+                        android:layout_width="180dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:backgroundTint="#1EFFFFFF"
+                        android:elevation="8dp"
+                        android:strokeColor="#FFFFFF"
+
+                        android:text="Save"
+                        android:textColor="#00FFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
