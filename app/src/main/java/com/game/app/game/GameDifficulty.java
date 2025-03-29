@@ -1,14 +1,14 @@
 package com.game.app.game;
 
 public class GameDifficulty {
-    private String[] gameDifficulty = {"easy","medium","hard"};
+    private static final String[] gameDifficulty = {"easy","medium","hard"};
     private String difficulty;
 
     public GameDifficulty()
     {
 
     }
-    String[] getAllGameDifficulty()
+    static String[] getAllGameDifficulty()
     {
         return gameDifficulty;
     }

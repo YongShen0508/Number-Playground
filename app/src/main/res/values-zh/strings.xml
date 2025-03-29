@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PracticalAssignment</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>中文</item>
+        <item>Malay</item>
+    </string-array>
+    <string name="app_name">数字游乐场</string>
     <string name="startGame">开始</string>
     <string name="mainActivityTitle">数字游乐场</string>
-    <string name="firstSelection">Number Clash</string>
+    <string name="firstSelection">"数字冲突 "</string>
+    <string name="secondSelection">"数字阶梯 "</string>
+    <string name="thirdSelection">数字生成</string>
+    <string name="fourthSelection">"数学大师 "</string>
+    <string name="selectGameTitle">"选择您的游戏 "</string>
+    <string name="quitGame">退出</string>
+    <string name="selectGameDifficultyTitle">"选择您的游戏难度 "</string>
+    <string name="moderateLevel">中等</string>
+    <string name="easyLevel">简单</string>
+    <string name="hardLevel">困难</string>
+    <string name="settings">设置</string>
+    <string name="greaterThan">大于</string>
+    <string name="lessThan">少于</string>
+    <string name="increasingOrder">递增次序</string>
+    <string name="decreasingOrder">递减次序</string>
+    <string name="submit">提交</string>
+    <string name="score">得分</string>
+    <string name="round">轮</string>
+    <string name="yes">是的</string>
+    <string name="no">不</string>
+    <string name="exitCurrentGameTitle">退出当前游戏</string>
+    <string name="exitCurrentGameInfo">您确定要退出该游戏吗？</string>
+    <string name="exitGameTitle">退出游戏</string>
+    <string name="exitGameInfo">您想退出游戏吗？</string>
+    <string name="timeLeft">剩余时间</string>
+    <string name="second">秒</string>
+    <string name="continues">继续</string>
+    <string name="answerTitle">答案是：</string>
+    <string name="ansCorrect">你是对的!!!</string>
+    <string name="congratulation">恭喜...</string>
+    <string name="arrange">将数字排列在</string>
+    <string name="addition">加</string>
+    <string name="substraction">减</string>
+    <string name="multiplication">乘</string>
+    <string name="division">除</string>
+    <string name="difficulty">难度 >></string>
+    <string name="game">"游戏>> "</string>
+    <string name="good_luck_next_time">祝你下次好运！</string>
+    <string name="continue_to_main_menu">返回主页</string>
+    <string name="composedNumberText">组成号码 >></string>
 </resources>

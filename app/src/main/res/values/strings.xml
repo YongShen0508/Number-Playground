@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">PracticalAssignment</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>中文</item>
+        <item>Malay</item>
+    </string-array>
+    <string name="app_name">"Number Playground "</string>
     <string name="startGame">Start</string>
     <string name="mainActivityTitle">"Number Playground "</string>
     <string name="firstSelection">Number Clash</string>
@@ -13,4 +18,33 @@
     <string name="easyLevel">Easy</string>
     <string name="hardLevel">Hard</string>
     <string name="settings">Settings</string>
+    <string name="greaterThan">Greater Than</string>
+    <string name="lessThan">Less Than</string>
+    <string name="increasingOrder">Increasing Order</string>
+    <string name="decreasingOrder">Decreasing Order</string>
+    <string name="submit">Submit</string>
+    <string name="score">score</string>
+    <string name="round">round</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exitCurrentGameTitle">Exit Current Game</string>
+    <string name="exitCurrentGameInfo">Are you sure that you want to exit this game?</string>
+    <string name="exitGameTitle">Exit Game</string>
+    <string name="exitGameInfo">Are yau want to exit the game?</string>
+    <string name="timeLeft">Time Left</string>
+    <string name="second">s</string>
+    <string name="continues">continue</string>
+    <string name="answerTitle">The answer is :</string>
+    <string name="ansCorrect">You are Correct!!!!</string>
+    <string name="congratulation">Congratulations...</string>
+    <string name="arrange">Arrange the numbers in</string>
+    <string name="addition">add</string>
+    <string name="substraction">subtract</string>
+    <string name="multiplication">multiply</string>
+    <string name="division">divide</string>
+    <string name="game">Games >></string>
+    <string name="difficulty">Difficulty >></string>
+    <string name="good_luck_next_time">Good luck next time!</string>
+    <string name="continue_to_main_menu">Continue To Main Menu</string>
+    <string name="composedNumberText">Composed number >></string>
 </resources>

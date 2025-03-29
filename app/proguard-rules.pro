@@ -19,3 +19,4 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Protect all classes from renaming (only use if necessary)

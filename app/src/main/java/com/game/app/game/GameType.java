@@ -1,14 +1,14 @@
 package com.game.app.game;
 
 public class GameType {
-    private final String[] gameType = {"Number Clash","Number Ladder","Number Builder","Maths master"};
+    private static final String[] gameType = {"Number Clash","Number Ladder","Number Builder","Maths master"};
     private String gameName;
 
     public GameType()
     {
 
     }
-    String[] getAllGameType()
+    static String[] getAllGameType()
     {
         return gameType;
     }

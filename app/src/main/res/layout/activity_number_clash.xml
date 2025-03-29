@@ -5,138 +5,181 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".gui.NumberClash">
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="20dp">
+        android:orientation="vertical">
 
-        <!-- Drop Areas for X and Y -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageButton
+                android:id="@+id/btnAsk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@android:drawable/ic_menu_help" />
 
             <TextView
-                android:id="@+id/xBox"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="X"
-                android:textSize="24sp"
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:background="@android:color/white"
-                android:elevation="5dp"
+                android:id="@+id/scores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+            <TextView
+                android:id="@+id/rounds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+            <!-- ImageButton on the Right -->
+            <TextView
+                android:id="@+id/times"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+
+            <ImageButton
+                android:id="@+id/pauseButton"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@android:drawable/ic_media_pause" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#B3E5FC"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/firstBox"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:background="#E3F2FD"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:padding="20dp"
                 android:shadowColor="#A0A0A0"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="5"/>
+                android:shadowRadius="5"
+                android:text=""
+                android:textColor="#263238"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:text=" Greater Than "
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textColor="#212121"
-                android:textStyle="bold"
-                android:layout_margin="20dp"
+                android:id="@+id/sentenceText"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:elevation="6dp"
+                android:layout_margin="10dp"
                 android:backgroundTint="#EEEEEE"
+                android:elevation="6dp"
+                android:gravity="center"
                 android:shadowColor="#B0BEC5"
                 android:shadowDx="3"
                 android:shadowDy="3"
                 android:shadowRadius="6"
-                android:strokeColor="#B0BEC5"/>
+                android:strokeColor="#B0BEC5"
+                android:text=""
+                android:textColor="#263238"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/yBox"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="Y"
-                android:textSize="24sp"
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:background="@android:color/white"
-                android:elevation="5dp"
+                android:id="@+id/secondBox"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:background="#E3F2FD"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:padding="20dp"
                 android:shadowColor="#A0A0A0"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="5"/>
+                android:shadowRadius="5"
+                android:text=""
+                android:textColor="#263238"
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Draggable Number Options -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:layout_marginTop="30dp">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/num1"
+                android:id="@+id/firstNumber"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:gravity="center"
-                android:text="45"
-                android:textSize="24sp"
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="45"
-                android:background="#D0E8F2"
-                android:elevation="5dp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:background="#A8E6CF"
+                android:clickable="true"
+                android:elevation="5dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:longClickable="true"
+                android:padding="20dp"
                 android:shadowColor="#808080"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="5"/>
+                android:shadowRadius="5"
+                android:textColor="#263238"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/num2"
+                android:id="@+id/secondNumber"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:gravity="center"
-                android:text="89"
-                android:textSize="24sp"
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:tag="89"
-                android:background="#D0E8F2"
-                android:elevation="5dp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
+                android:background="#A8E6CF"
+                android:clickable="true"
+                android:elevation="5dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:longClickable="true"
+                android:padding="20dp"
                 android:shadowColor="#808080"
                 android:shadowDx="2"
                 android:shadowDy="2"
-                android:shadowRadius="5"/>
+                android:shadowRadius="5"
+                android:textColor="#263238"
+                android:textSize="24sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Check Answer Button -->
         <Button
-            android:id="@+id/checkButton"
-            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/submitButton"
+            android:layout_width="121dp"
             android:layout_height="wrap_content"
-            android:text="Check Answer"
-            android:layout_marginTop="20dp"
-            android:padding="12dp"
-            android:textSize="18sp"
+            android:backgroundTint="#FFCDD2"
+            android:text="@string/submit"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#6D9EEB"
-            android:elevation="6dp"/>
+            android:textSize="18sp"
+            android:layout_margin="5sp"/>
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

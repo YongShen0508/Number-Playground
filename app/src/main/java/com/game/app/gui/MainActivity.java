@@ -3,83 +3,90 @@ package com.game.app.gui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.game.app.R;
+import com.game.app.util.Localization;
 import com.game.app.util.MusicServices;
 
 
 public class MainActivity extends AppCompatActivity {
-
     private Button startButton;
     private Button settingsButton;
     private Button quitButton;
-    private View splashScreen;
-    private View mainTitle;
-    private View mainContent;
-
     private Intent serviceIntent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_menu);
+
+        getWindow().setBackgroundDrawableResource(R.drawable.background_image);
 
         // Start the MusicService
         serviceIntent = new Intent(this, MusicServices.class);
-        startService(serviceIntent);
-
-        // Get references to views
-        splashScreen = findViewById(R.id.splashScreen);
-        mainTitle = findViewById(R.id.mainMenuTitle);
-        mainContent = findViewById(R.id.mainMenuContents);
-
-        splashScreen.setVisibility(View.VISIBLE);
-        mainTitle.setVisibility(View.GONE);
-        mainContent.setVisibility(View.GONE);
-
-        // Delay 2 seconds, then show main content
-        new Handler().postDelayed(() -> {
-            splashScreen.setVisibility(View.GONE);
-            mainTitle.setVisibility(View.VISIBLE);
-            mainContent.setVisibility(View.VISIBLE);
-        }, 2000);
+        //startService(serviceIntent);
 
         // Initialize buttons
         startButton = findViewById(R.id.startGameButton);
         settingsButton = findViewById(R.id.gameSettingsButton);
         quitButton = findViewById(R.id.quitGameButton);
+        Animation buttonPressAnim = AnimationUtils.loadAnimation(this, R.anim.button_pressed);
 
         // Set button actions
         startButton.setOnClickListener(v -> {
+            v.startAnimation(buttonPressAnim);
+
             Intent intent = new Intent(MainActivity.this, GameSelection.class);
             startActivity(intent);
         });
 
         settingsButton.setOnClickListener(v -> {
+            v.startAnimation(buttonPressAnim);
+
             Intent intent = new Intent(MainActivity.this, GameSettings.class);
             startActivity(intent);
         });
 
-        quitButton.setOnClickListener(v -> showQuitConfirmation());
+        quitButton.setOnClickListener(v -> {
+            v.startAnimation(buttonPressAnim);
+            showQuitConfirmation();
+        } );
     }
 
 
     private void showQuitConfirmation() {
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View dialogView = inflater.inflate(R.layout.activity_exit_dialog, null);
+
+        Button btnCancel = dialogView.findViewById(R.id.btnCancel);
+        Button btnExit = dialogView.findViewById(R.id.btnExit);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Quit Game");
-        builder.setMessage("Are you sure you want to exit?");
+        builder.setView(dialogView);  // Assign the custom XML layout
+        builder.setCancelable(false); // Prevent dismissing by tapping outside
 
-        builder.setPositiveButton("Yes", (dialog, which) -> {
-            stopService(serviceIntent);
-            finish(); // Close the app
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();  // Show the dialog
+
+        btnExit.setOnClickListener(v -> {
+            if (serviceIntent != null) {
+                stopService(serviceIntent); // Stop service safely
+            }
+            alertDialog.dismiss(); // Dismiss dialog to prevent memory leaks
+
+            finishAffinity();
+
         });
-        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss()); // Close the dialog, stay in the app
-        builder.show();
-    }
 
+        btnCancel.setOnClickListener(v -> alertDialog.dismiss()); // Close the dialog
+
+    }
 }

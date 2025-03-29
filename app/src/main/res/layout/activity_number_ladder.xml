@@ -4,6 +4,187 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.NumberLadder">
+    tools:context=".gui.NumberClash">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+
+            <ImageButton
+                android:id="@+id/btnAsk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@android:drawable/ic_menu_help" />
+
+            <TextView
+                android:id="@+id/scores"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+            <TextView
+                android:id="@+id/rounds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+            <!-- ImageButton on the Right -->
+            <TextView
+                android:id="@+id/times"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:textColor="#263238" />
+
+            <ImageButton
+                android:id="@+id/pauseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@android:drawable/ic_media_pause" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/questionsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"/>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#B3E5FC"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="6"
+                android:layout_margin="5dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/firstBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/secondBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/thirdBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/fourthBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/fifthBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sixthBox"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_margin="10dp"
+                    android:background="#E3F2FD"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text=""
+                    android:textColor="#263238"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/submitButton"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFCDD2"
+            android:text="@string/submit"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_margin="10sp"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

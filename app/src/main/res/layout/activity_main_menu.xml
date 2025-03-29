@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.MainActivity">
+
+    <TextView
+        android:id="@+id/mainMenuTitle"
+        android:layout_width="481dp"
+        android:layout_height="59dp"
+        android:fontFamily="@font/kablammo_regular"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="5"
+        android:text="@string/mainActivityTitle"
+        android:textAlignment="center"
+        android:textColor="#E0E0E0"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/mainMenuContents"
+        app:layout_constraintEnd_toEndOf="@+id/mainMenuContents"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/mainMenuContents"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+
+        <LinearLayout
+            android:id="@+id/mainMenuContents"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/mainMenuTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <Button
+                android:id="@+id/startGameButton"
+                android:layout_width="220dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_selector"
+                android:elevation="8dp"
+                android:fontFamily="@font/bangers_regular"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:text="@string/startGame"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"/>
+
+            <Button
+                android:id="@+id/gameSettingsButton"
+                android:layout_width="220dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_selector"
+                android:elevation="8dp"
+                android:fontFamily="@font/bangers_regular"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:text="@string/settings"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"/>
+
+            <Button
+                android:id="@+id/quitGameButton"
+                android:layout_width="220dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_selector"
+                android:elevation="8dp"
+                android:fontFamily="@font/bangers_regular"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="#FFFFFF"
+                android:text="@string/quitGame"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:shadowColor="#000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"/>
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

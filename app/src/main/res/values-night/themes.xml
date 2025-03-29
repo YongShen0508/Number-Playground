@@ -1,15 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.PracticalAssignment" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="android:windowBackground">@drawable/background_image</item>
+    <style name="Base.Theme.PracticalAssignment" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <!-- Ensure icons are dark -->
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <!-- Ensure navigation bar icons are dark (for light backgrounds) -->
-        <item name="android:windowLightNavigationBar">false</item>
-
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
+
+    <style name="Theme.PracticalAssignment" parent="Base.Theme.PracticalAssignment"/>
+
+    <!-- Ensure SplashScreen theme is consistent with the base theme -->
+    <style name="Theme.MyApp.Splash" parent="Base.Theme.PracticalAssignment">
+        <item name="android:windowBackground">@drawable/snow_studio</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
 </resources>

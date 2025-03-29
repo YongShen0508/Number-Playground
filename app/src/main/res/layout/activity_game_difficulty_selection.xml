@@ -21,12 +21,12 @@
         android:textColor="#E0E0E0"
         android:textSize="33sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.579" />
+        app:layout_constraintVertical_bias="0.079" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -34,7 +34,7 @@
         android:layout_height="270dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -42,21 +42,22 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="10dp">
 
             <Button
                 android:id="@+id/easyMode"
                 android:layout_width="232dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#002E5D"
+                android:background="@drawable/button_selector"
                 android:fontFamily="@font/bangers_regular"
                 android:gravity="center"
+                android:padding="5dp"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="10"
                 android:text="@string/easyLevel"
-                android:textColor="#00FFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -65,15 +66,16 @@
                 android:layout_width="232dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="#002E5D"
+                android:background="@drawable/button_selector"
                 android:fontFamily="@font/bangers_regular"
                 android:gravity="center"
+                android:padding="5dp"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="10"
                 android:text="@string/moderateLevel"
-                android:textColor="#00FFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -82,15 +84,16 @@
                 android:layout_width="232dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="#002E5D"
+                android:background="@drawable/button_selector"
                 android:fontFamily="@font/bangers_regular"
                 android:gravity="center"
+                android:padding="5dp"
                 android:shadowColor="#000000"
                 android:shadowDx="2"
                 android:shadowDy="2"
                 android:shadowRadius="10"
                 android:text="@string/hardLevel"
-                android:textColor="#00FFFF"
+                android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -111,11 +114,11 @@
         android:src="@drawable/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:tint="#00FFFF" />
+        app:layout_constraintVertical_bias="0.0"
+        app:tint="#000000" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">PracticalAssignment</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>中文</item>
+        <item>Malay</item>
+    </string-array>
+    <string name="app_name">Permainan Nombor</string>
     <string name="startGame">Mula</string>
     <string name="mainActivityTitle">Permainan Nombor</string>
-    <string name="firstSelection">Number Clash</string>
+    <string name="firstSelection">Pertembungan Nombor</string>
+    <string name="secondSelection">"Tangga Nombor "</string>
+    <string name="thirdSelection">"Pembina Nombor "</string>
+    <string name="fourthSelection">"Sarjana Matematik "</string>
+    <string name="selectGameTitle">Pilih Permainan Anda</string>
+    <string name="quitGame">"berhenti "</string>
+    <string name="selectGameDifficultyTitle">"Pilih kesukaran permainan anda "</string>
+    <string name="moderateLevel">Sederhana</string>
+    <string name="easyLevel">Mudah</string>
+    <string name="hardLevel">Keras</string>
+    <string name="settings">tetapan</string>
+    <string name="greaterThan">Besar Daripada</string>
+    <string name="lessThan">Kurang Daripada</string>
+    <string name="increasingOrder">susunan menaik</string>
+    <string name="decreasingOrder">susunan menurun</string>
+    <string name="submit">serahkan</string>
+    <string name="score">skor</string>
+    <string name="round">pusingan</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="exitCurrentGameTitle">"Keluar dari Permainan Semasa "</string>
+    <string name="exitCurrentGameInfo">Adakah anda pasti mahu keluar dari permainan ini?</string>
+    <string name="exitGameTitle">Keluar Permainan</string>
+    <string name="exitGameInfo">Adakah anda mahu keluar dari permainan?</string>
+    <string name="timeLeft">Tinggal Masa</string>
+    <string name="second">saat</string>
+    <string name="continues">teruskan</string>
+    <string name="answerTitle">"Jawapannya ialah: "</string>
+    <string name="ansCorrect">Anda Betul!!!!</string>
+    <string name="congratulation">tahniah...</string>
+    <string name="arrange">Susun nombor dalam</string>
+    <string name="addition">tambah</string>
+    <string name="substraction">tolak</string>
+    <string name="multiplication">kali</string>
+    <string name="division">bahagi</string>
+    <string name="difficulty">Kesukaran >></string>
+    <string name="game">Permainan >></string>
+    <string name="good_luck_next_time">Semoga berjaya lain kali!</string>
+    <string name="continue_to_main_menu">Teruskan Ke Menu Utama</string>
+    <string name="composedNumberText">Nombor tersusun >></string>
 </resources>
