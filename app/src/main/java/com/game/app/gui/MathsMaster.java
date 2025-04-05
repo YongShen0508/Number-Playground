@@ -9,7 +9,7 @@ import com.game.app.R;
 
 import java.util.Random;
 
-public class MathsMaster extends AppCompatActivity {
+public class MathsMaster extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); // Ensure proper lifecycle handling
@@ -20,11 +20,20 @@ public class MathsMaster extends AppCompatActivity {
 
         Intent intent;
         if (index == 1) {
+            finish();
+
             intent = new Intent(this, NumberClash.class);
+
         } else if (index == 2) {
+            finish();
+
             intent = new Intent(this, NumberLadder.class);
+
         } else {
+            finish();
+
             intent = new Intent(this, NumberBuilder.class);
+
         }
 
         startActivity(intent);

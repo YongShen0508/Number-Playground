@@ -21,15 +21,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
+import com.game.app.util.ButtonAnimation;
 import com.game.app.util.GameTimer;
 import com.game.app.util.MessageDialog;
 
 import java.util.Random;
 
-public class NumberClash extends AppCompatActivity implements GameTimer.TimerListener {
+public class NumberClash extends BaseActivity implements GameTimer.TimerListener {
 
     GameManager gameManager = GameManager.getInstance();
     private TextView box1, box2, num1, num2;
@@ -49,7 +51,6 @@ public class NumberClash extends AppCompatActivity implements GameTimer.TimerLis
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_clash);
-        getWindow().setBackgroundDrawableResource(R.drawable.background_image);
 
         box1 = findViewById(R.id.firstBox);
         box2 = findViewById(R.id.secondBox);
@@ -68,27 +69,31 @@ public class NumberClash extends AppCompatActivity implements GameTimer.TimerLis
                 getString(R.string.greaterThan),
                 getString(R.string.lessThan)
         };
-        Random random = new Random();
-        int randomIndex = random.nextInt(sentenceData.length);
-        sentence.setText(sentenceData[randomIndex]);
-
 
         enableDrag(num1);
         enableDrag(num2);
 
-        enableDrop(box1);
-        enableDrop(box2);
+        enableDrop(sentence);
 
         setQuestions();
 
-        checkButton.setOnClickListener(v -> submitAnswer());
-
+        checkButton.setOnClickListener(v -> {
+            ButtonAnimation.playButtonPress(this, v);
+            submitAnswer();
+        });
+        leaveCurrentGameButton.setOnClickListener(v->{
+            ButtonAnimation.playButtonPress(this, v);
+            leaveCurrentGame();
+        } );
+        askButton.setOnClickListener(v->{
+            ButtonAnimation.playButtonPress(this, v);
+            showInstruction();
+        });
         scoreText.setText(getString(R.string.score) + " : " + gameManager.getPoint());
         roundText.setText(getString(R.string.round) +" : " + gameManager.getGameRounds() + "/" + gameManager.getGameTotalRounds());
         gameTimer = new GameTimer((long) gameManager.getTimeLimit() * 1000, this);
         gameTimer.start();
 
-        leaveCurrentGameButton.setOnClickListener(v-> leaveCurrentGame());
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -140,82 +145,61 @@ public class NumberClash extends AppCompatActivity implements GameTimer.TimerLis
     }
 
     private void submitAnswer() {
+        if(gameTimer.isRunning())
+            gameTimer.stop();
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View dialogView = inflater.inflate(R.layout.activity_display_answer_dialog, null);
-
-        TextView dialogTitle = dialogView.findViewById(R.id.textAnswerTitle);
-        TextView dialogInfo = dialogView.findViewById(R.id.textAnswerInfo);
-        Button btnContinue = dialogView.findViewById(R.id.continueButton);
-
-        int xNum, yNum;
-        String infoText ="";
-        boolean correctAnswer = false;
-
-        if (xValue.equals(yValue)) {
-            xNum = Integer.parseInt(num1.getText().toString());
-            yNum = Integer.parseInt(num2.getText().toString());
-
-        } else if (!xValue.isEmpty() && !yValue.isEmpty()) {
-            xNum = Integer.parseInt(xValue);
-            yNum = Integer.parseInt(yValue);
-            if ((sentence.getText().equals(sentenceData[0]) && xNum > yNum) ||
-                    (sentence.getText().equals(sentenceData[1]) && xNum < yNum)) {
-                correctAnswer = true;
-                gameManager.addPoint();
+        boolean correctAns = false;
+        int firstNum = Integer.parseInt(box1.getText().toString());
+        int secondNum = Integer.parseInt(box2.getText().toString());
+        String text;
+        if(firstNum > secondNum){
+            text = sentenceData[0];
+            if(sentence.getText().toString().equals(text)){
+                correctAns = true;
             }
-        } else {
-            xNum = Integer.parseInt(num1.getText().toString());
-            yNum = Integer.parseInt(num2.getText().toString());
-        }
-
-        //error handling
-        if (sentence.getText().equals(sentenceData[0])) { // "greater than"
-            infoText = Math.max(xNum, yNum) + " " + sentenceData[0] + " " + Math.min(xNum, yNum);
-        }
-        else if (sentence.getText().equals(sentenceData[1])) { // "lesser than"
-            infoText = Math.min(xNum, yNum) + " " + sentenceData[1] + " " + Math.max(xNum, yNum);
-        }
-
-
-        if(correctAnswer){
-            dialogTitle.setText(getString(R.string.congratulation));
-            dialogInfo.setText(getString(R.string.ansCorrect));
         }
         else {
-            dialogTitle.setText(getString(R.string.answerTitle));
-            dialogInfo.setText(infoText);
+            text = sentenceData[1];
+            if(sentence.getText().toString().equals(text)){
+                correctAns = true;
+            }
+        }
+        String title, messages;
+        if(correctAns){
+            title = getString(R.string.congratulation);
+            messages = getString(R.string.ansCorrect);
+        }
+        else{
+            String infoText = firstNum + "  " + text + "  " + secondNum;
+            title = getString(R.string.answerTitle);
+            messages = infoText;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(dialogView);
-        builder.setCancelable(false);
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-        // Button Listener
-        btnContinue.setOnClickListener(v -> {
-            gameManager.addGameRound();
-            Intent intent;
-            if(gameManager.getGameRounds() == 10)
-            {
-                intent = new Intent(NumberClash.this, GameDashboard.class);
-            }
-            else if(gameManager.getGameType().equals(gameManager.getAllGameType()[3])){
-                intent = new Intent(NumberClash.this, MathsMaster.class);
-            }
-            else {
-                intent = new Intent(NumberClash.this, NumberClash.class);
-            }
-            startActivity(intent);
-        });
+        MessageDialog.createContinueGameDialog(this, title,messages, (Boolean continueGame) -> {
+            if (continueGame) {
+                gameManager.addGameRound();
+                Intent intent;
+                if(gameManager.getGameRounds() == 10 + 1)
+                {
+                    intent = new Intent(NumberClash.this, GameDashboard.class);
+                }
+                else if(gameManager.getGameType().equals(gameManager.getAllGameType().get(3))){
+                    intent = new Intent(NumberClash.this, MathsMaster.class);
+                }
+                else {
+                    intent = new Intent(NumberClash.this, NumberClash.class);
+                }
+                startActivity(intent);
+                finish();
+            }});
     }
     private void leaveCurrentGame() {
         gameTimer.pause();
 
-        MessageDialog.createDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
+                if(gameTimer.isRunning())
+                    gameTimer.stop();
                 Intent intent = new Intent(this, GameSelection.class);
                 startActivity(intent);
                 finish();
@@ -237,11 +221,17 @@ public class NumberClash extends AppCompatActivity implements GameTimer.TimerLis
             randomNum2 = random.nextInt(maxNumber) + 1;
         } while (randomNum2 == randomNum1);
 
-        // Set the numbers to the TextViews
-        num1.setText(String.valueOf(randomNum1));
-        num2.setText(String.valueOf(randomNum2));
+        box1.setText(String.valueOf(randomNum1));
+        box2.setText(String.valueOf(randomNum2));
 
+        num1.setText(sentenceData[0]);
+        num2.setText(sentenceData[1]);
 
+    }
+
+    private void showInstruction(){
+        String instructions = getString(R.string.instruction_clash);
+        Toast.makeText(this, instructions, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -253,4 +243,6 @@ public class NumberClash extends AppCompatActivity implements GameTimer.TimerLis
     public void onFinish() {
         submitAnswer();
     }
+
+
 }

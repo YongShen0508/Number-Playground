@@ -28,7 +28,7 @@
     <string name="round">轮</string>
     <string name="yes">是的</string>
     <string name="no">不</string>
-    <string name="exitCurrentGameTitle">退出当前游戏</string>
+    <string name="exitCurrentGameTitle">暂停当前游戏</string>
     <string name="exitCurrentGameInfo">您确定要退出该游戏吗？</string>
     <string name="exitGameTitle">退出游戏</string>
     <string name="exitGameInfo">您想退出游戏吗？</string>
@@ -44,8 +44,15 @@
     <string name="multiplication">乘</string>
     <string name="division">除</string>
     <string name="difficulty">难度 >></string>
-    <string name="game">"游戏>> "</string>
-    <string name="good_luck_next_time">祝你下次好运！</string>
+    <string name="game">游戏 >></string>
+    <string name="good_luck_next_time">❌祝你下次好运！</string>
     <string name="continue_to_main_menu">返回主页</string>
     <string name="composedNumberText">组成号码 >></string>
+    <string name="language">语言</string>
+    <string name="save">保存</string>
+    <string name="Music">音乐</string>
+    <string name="instruction_ladder">拖放数字按正确顺序重新排列</string>
+    <string name="instruction_clash">拖放到两个数字之间的空白处</string>
+    <string name="instruction_builder">拖放至空白处组成一个数字</string>
+    <string name="you_win">🎉恭喜!!!</string>
 </resources>

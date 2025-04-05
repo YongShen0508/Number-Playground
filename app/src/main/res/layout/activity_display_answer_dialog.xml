@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="#00FFFF"
+        android:textColor="#00E5FF"
         android:gravity="center"
         android:padding="6dp" />
 
@@ -35,8 +35,8 @@
         android:text="@string/continues"
         android:layout_gravity="center"
         android:padding="10dp"
-        android:textColor="#00FFFF"
-        android:backgroundTint="#003366"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#007BFF"
         android:textSize="15sp"
         android:textStyle="bold" />
 

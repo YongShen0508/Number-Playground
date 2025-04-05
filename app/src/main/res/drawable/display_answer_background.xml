@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#B0000000"/> <!-- Dark Gray (70% transparency) -->
-    <corners android:radius="12dp"/>
+    <solid android:color="#2E3B4E"/> <!-- Dark Gray (70% transparency) -->
 </shape>

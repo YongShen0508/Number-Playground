@@ -28,7 +28,7 @@
     <string name="round">pusingan</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
-    <string name="exitCurrentGameTitle">"Keluar dari Permainan Semasa "</string>
+    <string name="exitCurrentGameTitle">Jeda permainan semasa</string>
     <string name="exitCurrentGameInfo">Adakah anda pasti mahu keluar dari permainan ini?</string>
     <string name="exitGameTitle">Keluar Permainan</string>
     <string name="exitGameInfo">Adakah anda mahu keluar dari permainan?</string>
@@ -37,7 +37,7 @@
     <string name="continues">teruskan</string>
     <string name="answerTitle">"Jawapannya ialah: "</string>
     <string name="ansCorrect">Anda Betul!!!!</string>
-    <string name="congratulation">tahniah...</string>
+    <string name="congratulation">Tahniah...</string>
     <string name="arrange">Susun nombor dalam</string>
     <string name="addition">tambah</string>
     <string name="substraction">tolak</string>
@@ -45,7 +45,14 @@
     <string name="division">bahagi</string>
     <string name="difficulty">Kesukaran >></string>
     <string name="game">Permainan >></string>
-    <string name="good_luck_next_time">Semoga berjaya lain kali!</string>
+    <string name="good_luck_next_time">❌Semoga berjaya lain kali!</string>
     <string name="continue_to_main_menu">Teruskan Ke Menu Utama</string>
     <string name="composedNumberText">Nombor tersusun >></string>
+    <string name="language">Bahasa</string>
+    <string name="save">Simpan</string>
+    <string name="Music">muzik</string>
+    <string name="instruction_ladder">Seret dan lepaskan nombor untuk menyusun semula dalam susunan yang betul</string>
+    <string name="instruction_clash">Seret dan lepaskan ke dalam ruang putih antara dua nombor</string>
+    <string name="instruction_builder">Seret dan lepaskan ke dalam ruang putih untuk membentuk nombor</string>
+    <string name="you_win">🎉Taniah!!!</string>
 </resources>

@@ -23,9 +23,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
+import com.game.app.util.ButtonAnimation;
 import com.game.app.util.GameTimer;
 import com.game.app.util.MessageDialog;
 
@@ -37,18 +39,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class NumberLadder extends AppCompatActivity implements GameTimer.TimerListener {
+public class NumberLadder extends BaseActivity implements GameTimer.TimerListener {
 
     private final List<TextView> boxes = new ArrayList<>();
     private Button checkButton;
-
     private String[] sentenceData;
-
     private TextView scoreText;
     private TextView roundText;
-    private ImageButton leaveCurrentGameButton;
+    private ImageButton leaveCurrentGameButton,askButton;
     private TextView timeLeftText;
-
     private TextView questionText;
     private int displayNumber;
     private int sentenceIndex;
@@ -58,7 +57,6 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ladder);
-        getWindow().setBackgroundDrawableResource(R.drawable.background_image);
 
         scoreText = findViewById(R.id.scores);
         roundText = findViewById(R.id.rounds);
@@ -66,6 +64,7 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
         leaveCurrentGameButton = findViewById(R.id.pauseButton);
         checkButton = findViewById(R.id.submitButton);
         questionText = findViewById(R.id.questionsInfo);
+        askButton = findViewById(R.id.btnAsk);
 
         sentenceData = new String[]{
                 getString(R.string.increasingOrder),
@@ -77,10 +76,10 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
 
         int[] boxIds = {R.id.firstBox, R.id.secondBox, R.id.thirdBox, R.id.fourthBox, R.id.fifthBox,R.id.sixthBox};
 
-        String[] allGameDifficulty = gameManager.getAllGameDifficulty();
+        List<String> allGameDifficulty = gameManager.getAllGameDifficulty();
         String gameDifficulty = gameManager.getGameDifficulty();
         int[] boxAndNumDisplay = new int[]{4,5,6};
-        displayNumber = boxAndNumDisplay[Arrays.asList(allGameDifficulty).indexOf(gameDifficulty)];
+        displayNumber = boxAndNumDisplay[allGameDifficulty.indexOf(gameDifficulty)];
 
         for(int i =0;i<6;i++)
         {
@@ -95,7 +94,10 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
 
         setQuestion();
         checkButton.setOnClickListener(v -> submitAnswer());
-
+        askButton.setOnClickListener(v->{
+            ButtonAnimation.playButtonPress(this, v);
+            showInstruction();
+        });
         scoreText.setText(getString(R.string.score) + " : " + gameManager.getPoint());
         roundText.setText(getString(R.string.round) +" : " + gameManager.getGameRounds() + "/" + gameManager.getGameTotalRounds());
         gameTimer = new GameTimer((long) gameManager.getTimeLimit() * 1000, this);
@@ -183,15 +185,13 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
             boxes.get(i).setText(String.valueOf(randomNum));
         }
     }
-
+    private void showInstruction(){
+        String instructions = getString(R.string.instruction_ladder);
+        Toast.makeText(this, instructions, Toast.LENGTH_LONG).show();
+    }
     private void submitAnswer(){
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View dialogView = inflater.inflate(R.layout.activity_display_answer_dialog, null);
-
-        TextView dialogTitle = dialogView.findViewById(R.id.textAnswerTitle);
-        TextView dialogInfo = dialogView.findViewById(R.id.textAnswerInfo);
-        Button btnContinue = dialogView.findViewById(R.id.continueButton);
-
+        if(gameTimer.isRunning())
+            gameTimer.stop();
         List<Integer> userNumbers = new ArrayList<>();
 
         // Retrieve numbers from boxes
@@ -223,10 +223,10 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
         else if(isDecreasing == false){
             userNumbers.sort(Collections.reverseOrder());
         }
-
+        String title, messages;
         if(isIncreasing && isDecreasing){
-            dialogTitle.setText(getString(R.string.congratulation));
-            dialogInfo.setText(getString(R.string.ansCorrect));
+            title = getString(R.string.congratulation);
+            messages = getString(R.string.ansCorrect);
         }
         else {
             StringBuilder infoText = new StringBuilder();
@@ -236,41 +236,40 @@ public class NumberLadder extends AppCompatActivity implements GameTimer.TimerLi
             }
 
             String finalInfoText = infoText.toString().trim();
-            dialogTitle.setText(getString(R.string.answerTitle));
-            dialogInfo.setText(finalInfoText);
+            title = getString(R.string.answerTitle);
+            messages = finalInfoText;
         }
+        MessageDialog.createContinueGameDialog(this, title,messages, (Boolean continueGame) -> {
+            if (continueGame) {
+                gameManager.addGameRound();
+                Intent intent;
+                if(gameManager.getGameRounds() == 10 + 1)
+                {
+                    intent = new Intent(NumberLadder.this, GameDashboard.class);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(dialogView);
-        builder.setCancelable(false);
+                }
+                else if(gameManager.getGameType().equals(gameManager.getAllGameType().get(3))){
+                    intent = new Intent(NumberLadder.this, MathsMaster.class);
 
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-        btnContinue.setOnClickListener(v -> {
-            gameManager.addGameRound();
-            Intent intent;
-            if(gameManager.getGameRounds() == 10)
-            {
-                intent = new Intent(NumberLadder.this, GameDashboard.class);
-            }
-            else if(gameManager.getGameType().equals(gameManager.getAllGameType()[3])){
-                intent = new Intent(NumberLadder.this, MathsMaster.class);
-            }
-            else {
-                intent = new Intent(NumberLadder.this, NumberLadder.class);
-            }
-            startActivity(intent);
-        });
+                }
+                else {
+                    intent = new Intent(NumberLadder.this, NumberLadder.class);
+                }
+                startActivity(intent);
+                finish();
+            }});
     }
 
     private void leaveCurrentGame() {
         gameTimer.pause();
-        MessageDialog.createDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
+                if(gameTimer.isRunning())
+                    gameTimer.stop();
                 Intent intent = new Intent(this, GameSelection.class);
                 startActivity(intent);
                 finish();
+
             }
             else {
                 gameTimer.resume();

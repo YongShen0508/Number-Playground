@@ -31,7 +31,7 @@ public class DifficultyRules {
     @Nullable
     public static List<Integer> getDifficultyRules(String difficulty){
         List<Integer> difficultyRules = new ArrayList<>();
-        List<String> gameDifficulty = new ArrayList<>(Arrays.asList(GameDifficulty.getAllGameDifficulty()));
+        List<String> gameDifficulty = new ArrayList<>(GameDifficulty.getAllGameDifficulty());
         int index = gameDifficulty.indexOf(difficulty);
         if(index == -1)
         {

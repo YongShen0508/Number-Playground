@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
@@ -28,7 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerListener {
+public class NumberBuilder extends BaseActivity implements GameTimer.TimerListener {
 
     private final List<String> arithmeticWords = new ArrayList<>();
     private List<TextView> boxes = new ArrayList<>();
@@ -50,7 +51,6 @@ public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_builder);
-        getWindow().setBackgroundDrawableResource(R.drawable.background_image);
 
         arithmeticWords.addAll(Arrays.asList(
                 getString(R.string.addition),
@@ -64,13 +64,14 @@ public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerL
         leaveCurrentGameButton = findViewById(R.id.pauseButton);
         checkButton = findViewById(R.id.submitButton);
         questionText = findViewById(R.id.questionsInfo);
+        askButton = findViewById(R.id.btnAsk);
 
 
         int[] boxIds = {R.id.firstBox, R.id.secondBox, R.id.thirdBox};
         int[] numIds = {R.id.firstNumber,R.id.secondNumber,R.id.thirdNumber,R.id.fourthNumber,R.id.fifthNumber,R.id.sixthNumber};
-        String[] allGameDifficulty = gameManager.getAllGameDifficulty();
+        List<String> allGameDifficulty = gameManager.getAllGameDifficulty();
         String gameDifficulty = gameManager.getGameDifficulty();
-        displayNumber = numDisplay[Arrays.asList(allGameDifficulty).indexOf(gameDifficulty)];
+        displayNumber = numDisplay[allGameDifficulty.indexOf(gameDifficulty)];
 
         for(int i =0;i<6;i++)
         {
@@ -159,12 +160,8 @@ public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerL
         }
     }
     private void submitAnswer(){
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View dialogView = inflater.inflate(R.layout.activity_display_answer_dialog, null);
-
-        TextView dialogTitle = dialogView.findViewById(R.id.textAnswerTitle);
-        TextView dialogInfo = dialogView.findViewById(R.id.textAnswerInfo);
-        Button btnContinue = dialogView.findViewById(R.id.continueButton);
+        if(gameTimer.isRunning())
+            gameTimer.stop();
 
 
         int index = arithmeticWords.indexOf(boxes.get(1).getText().toString());
@@ -203,40 +200,39 @@ public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerL
             correctAns = false;  // Handle invalid number input
         }
 
-
+        String title,messages;
         if(correctAns){
-            dialogTitle.setText(getString(R.string.congratulation));
-            dialogInfo.setText(getString(R.string.ansCorrect));
+            title = getString(R.string.congratulation);
+            messages = getString(R.string.ansCorrect);
         }
         else {
             String infoText = ansList.get(0) + "  " +arithmeticWords.get(index) + "  " + ansList.get(1);
-            dialogTitle.setText(getString(R.string.answerTitle));
-            dialogInfo.setText(infoText);
+            title = getString(R.string.answerTitle);
+            messages = infoText;
         }
+        MessageDialog.createContinueGameDialog(this, title,messages, (Boolean continueGame) -> {
+            if (continueGame) {
+                gameManager.addGameRound();
+                Intent intent;
+                if(gameManager.getGameRounds() == 10 + 1)
+                {
+                    intent = new Intent(NumberBuilder.this, GameDashboard.class);
+                }
+                else if(gameManager.getGameType().equals(gameManager.getAllGameType().get(3))){
+                    intent = new Intent(NumberBuilder.this, MathsMaster.class);
+                }
+                else {
+                    intent = new Intent(NumberBuilder.this, NumberBuilder.class);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(dialogView);
-        builder.setCancelable(false);
-
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-
-        btnContinue.setOnClickListener(v -> {
-            gameManager.addGameRound();
-            Intent intent;
-            if(gameManager.getGameRounds() == 10)
-            {
-                intent = new Intent(NumberBuilder.this, GameDashboard.class);
-            }
-            else if(gameManager.getGameType().equals(gameManager.getAllGameType()[3])){
-                intent = new Intent(NumberBuilder.this, MathsMaster.class);
-            }
-            else {
-                intent = new Intent(NumberBuilder.this, NumberBuilder.class);
-            }
-            startActivity(intent);
-        });    }
-
+                }
+                startActivity(intent);
+                finish();
+            }});
+    }
+    private void showInstruction(){
+        String instructions = getString(R.string.instruction_builder);
+        Toast.makeText(this, instructions, Toast.LENGTH_LONG).show();
+    }
     @SuppressLint("ClickableViewAccessibility")
     private void enableDrag(TextView number) {
         number.setOnTouchListener(this::onNumberTouched);
@@ -285,11 +281,14 @@ public class NumberBuilder extends AppCompatActivity implements GameTimer.TimerL
 
     private void leaveCurrentGame() {
         gameTimer.pause();
-        MessageDialog.createDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
+                if(gameTimer.isRunning())
+                    gameTimer.stop();
                 Intent intent = new Intent(this, GameSelection.class);
                 startActivity(intent);
                 finish();
+
             }
             else {
                 gameTimer.resume();

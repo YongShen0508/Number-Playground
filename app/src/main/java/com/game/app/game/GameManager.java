@@ -43,12 +43,12 @@ public class GameManager {
         return gameType.getGameType();
     }
 
-
-    public String[] getAllGameType()
+    public List<String> getAllGameType()
     {
         return GameType.getAllGameType();
     }
-    public String[] getAllGameDifficulty()
+
+    public List<String> getAllGameDifficulty()
     {
         return GameDifficulty.getAllGameDifficulty();
     }
@@ -102,6 +102,17 @@ public class GameManager {
             return -1;
         return gameTypeDifficultyRule.get(2);
     }
+    public void setAllGameTypeLocalizedName(List<String> localizedName){
+        gameType.setLocalizedNames(localizedName);
+    }
 
-
+    public String getLocalizedGameTypeName(int gameNumber){
+        return gameType.getLocalizedNames(gameNumber);
+    }
+    public void setAllGameDiffLocalizedName(List<String> localizedName){
+        gameDifficulty.setLocalizedNames(localizedName);
+    }
+    public String getLocalizedGameDiffName(int diffNumber){
+        return gameDifficulty.getLocalizedNames(diffNumber);
+    }
 }

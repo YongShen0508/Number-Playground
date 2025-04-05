@@ -9,11 +9,4 @@
 
     <style name="Theme.PracticalAssignment" parent="Base.Theme.PracticalAssignment"/>
 
-    <!-- Ensure SplashScreen theme is consistent with the base theme -->
-    <style name="Theme.MyApp.Splash" parent="Base.Theme.PracticalAssignment">
-        <item name="android:windowBackground">@drawable/snow_studio</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-    </style>
-
 </resources>
