@@ -1,23 +1,14 @@
 package com.game.app.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.AudioManager;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.*;
 import android.content.*;
 import com.game.app.R;
 
 import com.game.app.game.GameManager;
 import com.game.app.util.ButtonAnimation;
-import com.game.app.util.MusicServices;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameDifficultySelection extends BaseActivity {
@@ -26,8 +17,6 @@ public class GameDifficultySelection extends BaseActivity {
     private Button hardButton;
     private ImageButton backSelectionButton;
     private GameManager gameManager = GameManager.getInstance();
-    private Intent serviceIntent;
-    private AudioManager audioManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +26,6 @@ public class GameDifficultySelection extends BaseActivity {
         moderateButton = findViewById(R.id.moderateMode);
         hardButton = findViewById(R.id.hardMode);
         backSelectionButton = findViewById(R.id.backToSelection);
-
-        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         easyButton.setOnClickListener(v ->{
             ButtonAnimation.playButtonPress(this, v);

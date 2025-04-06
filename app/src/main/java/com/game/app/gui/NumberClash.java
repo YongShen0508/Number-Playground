@@ -4,8 +4,6 @@
  */
 package com.game.app.gui;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 
 import android.annotation.SuppressLint;
@@ -13,9 +11,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -36,8 +32,6 @@ public class NumberClash extends BaseActivity implements GameTimer.TimerListener
     GameManager gameManager = GameManager.getInstance();
     private TextView box1, box2, num1, num2;
     private Button checkButton;
-    private String xValue = "", yValue = "";
-
     private String[] sentenceData;
     private TextView sentence;
 
@@ -131,12 +125,6 @@ public class NumberClash extends BaseActivity implements GameTimer.TimerListener
                     view.setText(draggedNumber);
                     view.setBackgroundColor(Color.parseColor("#B3E5FC"));
                     view.setTextColor(Color.parseColor("#263238"));
-                    // Save values
-                    if (v.getId() == R.id.firstBox) {
-                        xValue = draggedNumber;
-                    } else if (v.getId() == R.id.secondBox) {
-                        yValue = draggedNumber;
-                    }
                     return true;
                 default:
                     return false;
@@ -166,6 +154,7 @@ public class NumberClash extends BaseActivity implements GameTimer.TimerListener
         }
         String title, messages;
         if(correctAns){
+            gameManager.addPoint();
             title = getString(R.string.congratulation);
             messages = getString(R.string.ansCorrect);
         }
@@ -196,7 +185,7 @@ public class NumberClash extends BaseActivity implements GameTimer.TimerListener
     private void leaveCurrentGame() {
         gameTimer.pause();
 
-        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.createLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
                 if(gameTimer.isRunning())
                     gameTimer.stop();

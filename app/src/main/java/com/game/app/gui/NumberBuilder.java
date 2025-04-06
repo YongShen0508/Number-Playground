@@ -1,7 +1,5 @@
 package com.game.app.gui;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 
 import android.annotation.SuppressLint;
@@ -10,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +17,7 @@ import android.widget.Toast;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
+import com.game.app.util.ButtonAnimation;
 import com.game.app.util.GameTimer;
 import com.game.app.util.MessageDialog;
 
@@ -93,14 +91,22 @@ public class NumberBuilder extends BaseActivity implements GameTimer.TimerListen
         }
 
         setQuestion();
-        checkButton.setOnClickListener(v -> submitAnswer());
-
+        checkButton.setOnClickListener(v -> {
+            ButtonAnimation.playButtonPress(this, v);
+            submitAnswer();
+        });
+        leaveCurrentGameButton.setOnClickListener(v->{
+            ButtonAnimation.playButtonPress(this, v);
+            leaveCurrentGame();
+        } );
+        askButton.setOnClickListener(v->{
+            ButtonAnimation.playButtonPress(this, v);
+            showInstruction();
+        });
         scoreText.setText(getString(R.string.score) + " : " + gameManager.getPoint());
         roundText.setText(getString(R.string.round) +" : " + gameManager.getGameRounds() + "/" + gameManager.getGameTotalRounds());
         gameTimer = new GameTimer((long) gameManager.getTimeLimit() * 1000, this);
         gameTimer.start();
-
-        leaveCurrentGameButton.setOnClickListener(v-> leaveCurrentGame());
     }
 
     private void setQuestion(){
@@ -202,6 +208,7 @@ public class NumberBuilder extends BaseActivity implements GameTimer.TimerListen
 
         String title,messages;
         if(correctAns){
+            gameManager.addPoint();
             title = getString(R.string.congratulation);
             messages = getString(R.string.ansCorrect);
         }
@@ -281,7 +288,7 @@ public class NumberBuilder extends BaseActivity implements GameTimer.TimerListen
 
     private void leaveCurrentGame() {
         gameTimer.pause();
-        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.createLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
                 if(gameTimer.isRunning())
                     gameTimer.stop();

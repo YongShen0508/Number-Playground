@@ -1,7 +1,5 @@
 package com.game.app.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,9 +8,7 @@ import android.widget.TextView;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
-import com.game.app.game.GameType;
 import com.game.app.util.ButtonAnimation;
-import com.game.app.util.Localization;
 
 public class GameDashboard extends BaseActivity {
 

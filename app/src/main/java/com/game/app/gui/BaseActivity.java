@@ -2,7 +2,6 @@ package com.game.app.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,9 +22,6 @@ public class BaseActivity extends AppCompatActivity {
         gameManager.setAllGameDiffLocalizedName(Arrays.asList(getString(R.string.easyLevel),getString(R.string.moderateLevel),getString(R.string.hardLevel)));
         getWindow().setBackgroundDrawableResource(R.drawable.background_image);
         Localization.setLocale(this,Localization.getSavedLanguage(this));
-
-
-
     }
         @Override
     protected void onPause() {

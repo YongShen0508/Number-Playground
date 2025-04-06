@@ -1,19 +1,14 @@
 package com.game.app.gui;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.*;
-import android.media.AudioManager;
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+
 import android.widget.*;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
 import com.game.app.util.ButtonAnimation;
-import com.game.app.util.MusicServices;
 
 public class GameSelection extends BaseActivity {
     private Button numberClash;
@@ -22,8 +17,6 @@ public class GameSelection extends BaseActivity {
     private Button mathsMaster;
     private ImageButton backMenuButton;
     private GameManager gameManager = GameManager.getInstance();
-    private Intent serviceIntent;
-    private AudioManager audioManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

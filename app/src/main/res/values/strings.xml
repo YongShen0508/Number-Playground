@@ -46,11 +46,11 @@
     <string name="difficulty">Difficulty >></string>
     <string name="good_luck_next_time">❌Good luck next time!</string>
     <string name="continue_to_main_menu">Back To Main Menu</string>
-    <string name="composedNumberText">Composed number >></string>
+    <string name="composedNumberText">Composed a number >></string>
     <string name="Music">Music</string>
     <string name="language">Language</string>
     <string name="save">SAVE</string>
-    <string name="instruction_ladder">Drag and drop numbers to rearrange them in correct order</string>
+    <string name="instruction_ladder">Drag and swap numbers to rearrange them in correct order</string>
     <string name="instruction_clash">Drag and drop into white spaces between two numbers</string>
     <string name="instruction_builder">Drag and drop into white spaces to form a number</string>
     <string name="you_win">🎉Congratulations!!!</string>

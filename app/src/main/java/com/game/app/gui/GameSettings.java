@@ -22,12 +22,10 @@ public class GameSettings extends BaseActivity {
     private ImageButton btnClose;
     private Button btnSaveSettings;
     private Spinner languageSpinner = null;
-    private String[] languageCodes;
     private String selectedLanguageCode;
     private SharedPreferences sharedPreferences;
     private static final String PREFS_NAME = "SettingsPrefs";
     private static final String SOUND_STATE_KEY = "soundState";
-
     private SwitchCompat soundSwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

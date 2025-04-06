@@ -5,8 +5,7 @@
 
 package com.game.app.gui;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.core.view.ViewCompat;
 
 import android.annotation.SuppressLint;
@@ -14,10 +13,7 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.DragEvent;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +28,6 @@ import com.game.app.util.GameTimer;
 import com.game.app.util.MessageDialog;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -217,20 +212,20 @@ public class NumberLadder extends BaseActivity implements GameTimer.TimerListene
             }
         }
 
-        if(isIncreasing == false){
+        if(!isIncreasing){
             Collections.sort(userNumbers); // Sort in increasing order
         }
-        else if(isDecreasing == false){
+        else if(!isDecreasing){
             userNumbers.sort(Collections.reverseOrder());
         }
         String title, messages;
         if(isIncreasing && isDecreasing){
+            gameManager.addPoint();
             title = getString(R.string.congratulation);
             messages = getString(R.string.ansCorrect);
         }
         else {
             StringBuilder infoText = new StringBuilder();
-
             for (int num : userNumbers) {
                 infoText.append(num).append(" ");
             }
@@ -250,7 +245,6 @@ public class NumberLadder extends BaseActivity implements GameTimer.TimerListene
                 }
                 else if(gameManager.getGameType().equals(gameManager.getAllGameType().get(3))){
                     intent = new Intent(NumberLadder.this, MathsMaster.class);
-
                 }
                 else {
                     intent = new Intent(NumberLadder.this, NumberLadder.class);
@@ -262,7 +256,7 @@ public class NumberLadder extends BaseActivity implements GameTimer.TimerListene
 
     private void leaveCurrentGame() {
         gameTimer.pause();
-        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
+        MessageDialog.createLeaveGameDialog(this, getString(R.string.exitCurrentGameTitle),getString(R.string.exitCurrentGameInfo), (Boolean isExit) -> {
             if (isExit) {
                 if(gameTimer.isRunning())
                     gameTimer.stop();

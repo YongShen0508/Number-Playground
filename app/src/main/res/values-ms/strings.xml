@@ -51,7 +51,7 @@
     <string name="language">Bahasa</string>
     <string name="save">Simpan</string>
     <string name="Music">muzik</string>
-    <string name="instruction_ladder">Seret dan lepaskan nombor untuk menyusun semula dalam susunan yang betul</string>
+    <string name="instruction_ladder">Seret dan tukar nombor untuk menyusun semula dalam susunan yang betul</string>
     <string name="instruction_clash">Seret dan lepaskan ke dalam ruang putih antara dua nombor</string>
     <string name="instruction_builder">Seret dan lepaskan ke dalam ruang putih untuk membentuk nombor</string>
     <string name="you_win">🎉Taniah!!!</string>

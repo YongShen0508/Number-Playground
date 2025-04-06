@@ -2,9 +2,6 @@ package com.game.app.gui;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.game.app.R;
 
 import java.util.Random;

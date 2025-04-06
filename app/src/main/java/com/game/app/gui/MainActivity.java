@@ -6,14 +6,9 @@ import android.widget.Button;
 
 import com.game.app.R;
 import com.game.app.game.GameManager;
-import com.game.app.game.GameType;
 import com.game.app.util.ButtonAnimation;
-import com.game.app.util.Localization;
 import com.game.app.util.MessageDialog;
 import com.game.app.util.MusicServices;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class MainActivity extends BaseActivity{
@@ -27,7 +22,6 @@ public class MainActivity extends BaseActivity{
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
 
         serviceIntent = new Intent(this, MusicServices.class);
         startService(serviceIntent);
@@ -55,7 +49,7 @@ public class MainActivity extends BaseActivity{
         } );
     }
     private void showQuitConfirmation() {
-        MessageDialog.creatLeaveGameDialog(this, getString(R.string.exitGameTitle),getString(R.string.exitGameInfo), (Boolean isExit) -> {
+        MessageDialog.createLeaveGameDialog(this, getString(R.string.exitGameTitle),getString(R.string.exitGameInfo), (Boolean isExit) -> {
             if (isExit) {
                 if (serviceIntent != null) {
                     finishAffinity();
