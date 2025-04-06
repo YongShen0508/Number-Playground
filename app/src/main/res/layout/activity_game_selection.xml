@@ -37,7 +37,7 @@
         android:shadowRadius="5"
         android:text="@string/selectGameTitle"
         android:textColor="#E0E0E0"
-        android:textSize="33sp"
+        android:textSize="31sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

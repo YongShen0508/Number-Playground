@@ -232,6 +232,4 @@ public class NumberClash extends BaseActivity implements GameTimer.TimerListener
     public void onFinish() {
         submitAnswer();
     }
-
-
 }
